@@ -1,0 +1,30 @@
+﻿@using Vidly2.Models
+@model System.Collections.Generic.IEnumerable<Vidly2.Models.Customer>
+
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+@if (@Model == null)
+{
+    <h4>We don't have any customers yet!</h4>
+}
+else
+{
+    <table>
+        <thead>
+        <tr>
+            <td>Customer</td>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (Customer cust in @Model)
+        {
+            <tr><td>@Html.ActionLink(cust.Name,"Details","Customer",new {id=cust.Id},null)</td></tr>
+        }
+
+        </tbody>
+    </table>
+}
