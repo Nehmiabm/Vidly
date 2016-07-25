@@ -47,6 +47,7 @@ namespace Vidly2.Controllers
             return View("MovieForm", movieViewModel);
         }
 
+        [HttpPost]
         public ActionResult Save(Movie movie)
         {
             if (movie.MovieId == 0)
@@ -68,6 +69,8 @@ namespace Vidly2.Controllers
         public ActionResult Edit(int id)
         {
             var movieInDb = _movieContext.Movie.SingleOrDefault(m => m.MovieId == id);
+            if (movieInDb == null)
+                return HttpNotFound();
             var genresInDb = _movieContext.Genres;
             var movieViewModel = new MovieFormViewModel()
             {
