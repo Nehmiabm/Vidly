@@ -42,12 +42,14 @@ namespace Vidly2.Controllers
             var genresDb = _movieContext.Genres.ToList();
             var movieViewModel = new MovieFormViewModel()
             {
-              Genres = genresDb
+              Genres = genresDb,
+              Movie = new Movie()
             };
             return View("MovieForm", movieViewModel);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Movie movie)
         {
             if (movie.MovieId == 0)

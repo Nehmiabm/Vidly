@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using Vidly2.Models;
 
-namespace Vidly2.Models
+namespace Vidly2.Dtos
 {
-    public class Movie
+    public class MovieDto
     {
         [Key]
         public int MovieId { get; set; }
@@ -14,24 +15,16 @@ namespace Vidly2.Models
         [StringLength(255)]
         [Required]
         public string Name { get; set; }
-        [StringLength(50)]
-        public Genre Genre { get; set; }
 
-        [Display(Name = "Genre")]
         [Required]
         public int GenreId { get; set; }
 
-        [Display(Name = "Release Date")]
         [Required]
         public DateTime ReleaseDate { get; set; }
-
-        [Display(Name = "Added Date")]
         public DateTime AddedDate { get; set; }
 
-        [Display(Name = "Number in Stock")]
         [Required]
-        [Range(1,20)]
+        [Range(1, 20)]
         public int NumberInStock { get; set; }
-
     }
 }
