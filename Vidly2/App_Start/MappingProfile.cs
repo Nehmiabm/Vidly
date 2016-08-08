@@ -13,10 +13,10 @@ namespace Vidly2.App_Start
     {
         public MappingProfile()
         {
-            Mapper.CreateMap<Movie, MovieDto>().ForMember(m =>m.MovieId, opt=>
- opt.Ignore());
+            Mapper.CreateMap<Movie, MovieDto>();
             Mapper.CreateMap<MovieDto, Movie>().ForMember(m => m.MovieId, opt =>
   opt.Ignore());
+            Mapper.CreateMap<Genre, GenreDto>();
         }
     }
 }

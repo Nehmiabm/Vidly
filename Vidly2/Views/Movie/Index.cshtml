@@ -1,5 +1,4 @@
-﻿@using Vidly2.Models
-@model System.Collections.Generic.IEnumerable<Vidly2.Models.Movie>
+﻿
 
 @{
     ViewBag.Title = "Movies";
@@ -8,22 +7,20 @@
 
 <h2>Movies</h2>
 @Html.ActionLink("NEW MOVIE","New","Movie",new {@class="btn btn-primary"})
-<table class="table table-bordered table-hover">
+<table id="movies" class="table table-bordered table-hover">
     <thead>
     <tr>
         <th>
             Movies
         </th>
         <th>Genre</th>
+        <th>Delete</th>
     </tr>
     </thead>
     <tbody>
-    @foreach (Movie movie in Model)
-    {
-        <tr>
-            <td>@Html.ActionLink(@movie.Name, "Edit", "Movie", new { id = @movie.MovieId }, null)</td>
-            <td>@movie.Genre.Name</td>
-        </tr>
-    }
     </tbody>
 </table>
+@section scripts
+{
+    @Scripts.Render("~/bundles/movie")
+}
